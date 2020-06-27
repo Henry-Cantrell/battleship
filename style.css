@@ -1,0 +1,29 @@
+.squares {
+    width: 1fr;
+    height: 1fr;
+    border-width: 1px;
+    border-style: solid;
+    background-color: white;
+}
+
+#One {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    width: 450px;
+    height: 450px;
+    border: 5px black solid;
+    border-radius: 5px;
+    margin:10px;
+}
+
+#Two {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    width: 450px;
+    height: 450px;
+    border: 5px black solid;
+    border-radius: 5px;
+    margin:10px;
+}
