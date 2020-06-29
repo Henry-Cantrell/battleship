@@ -1,28 +1,17 @@
 let newShip = require("/home/suzuka/Coding/the_odin_project/Projects/battleship/src/modules/ship");
 
-let gameBoard = (coor1, coor2, coor3) => {
+let gameBoard = (coor1, coor2, coor3, bool, name) => {
 
-    const thisCoords = {
-    c1: coor1,
-    c2: coor2,
-    c3: coor3,
+  let nameObj = {
+    name: name
+  }
+
+  let thisShip = newShip(coor1, coor2, coor3);
+
+  let receiveAttack = (tile) => {
+    thisShip.hit(tile);
   };
-
-  let thisShip = newShip(thisCoords.c1, thisCoords.c2, thisCoords.c3);
-
-  let receiveAttack = (attack) => {
-    if (
-      attack === thisShip.coords.coordUno ||
-      thisShip.coords.coordDos ||
-      thisShip.coords.coordTres
-    ) {
-      thisShip.hit(attack);
-      return "nice hit";
-    } else {
-      return "missed";
-    }
-  };
-  return { thisCoords, thisShip, receiveAttack };
+  return { receiveAttack, nameObj };
 };
 
 module.exports = gameBoard;
