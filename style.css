@@ -6,6 +6,22 @@
     background-color: white;
 }
 
+.hit {
+    width: 1fr;
+    height: 1fr;
+    border-width: 1px;
+    border-style: solid;
+    background-color: green;
+}
+
+.miss {
+    width: 1fr;
+    height: 1fr;
+    border-width: 1px;
+    border-style: solid;
+    background-color: red;
+}
+
 #One {
     display: grid;
     grid-template-columns: repeat(3, 1fr);

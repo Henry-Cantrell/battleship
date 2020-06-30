@@ -1,25 +1,33 @@
 let gameBoard = require("./gameBoardStuff/gameBoard");
-let newShip = require("./ship");
-let newPlayer = require("./playerFactory");
 let gameBoardRender = require("./gameBoardStuff/gameBoardRender");
+let gameBoardAel = require("./gameBoardStuff/gameBoardAel");
+let newPlayer = require("./playerFactory");
+let turnHandle = require("./gameBoardStuff/truth");
 
 let gameLoop = () => {
-    gameBoardRender("One");
-    gameBoardRender("Two");
-  
-    const gameBoardOne = gameBoard(
-      document.getElementById("One1"),
-      document.getElementById("One2"),
-      document.getElementById("One3")
-    );
-    const gameBoardTwo = gameBoard(
-      document.getElementById("Two1"),
-      document.getElementById("Two2"),
-      document.getElementById("Two3")
-    );
-  
-    const playerOne = newPlayer(gameBoardTwo);
-    const playerTwo = newPlayer(gameBoardOne);
-  };
+  const truth = turnHandle();
 
-  module.exports = gameLoop
+  const renderOne = gameBoardRender("One");
+  const renderTwo = gameBoardRender("Two");
+
+  const gameBoardOne = gameBoard(
+    renderOne.renderArr[0],
+    renderOne.renderArr[1],
+    renderOne.renderArr[2],
+    "Dos"
+  );
+  const gameBoardTwo = gameBoard(
+    renderTwo.renderArr[0],
+    renderTwo.renderArr[1],
+    renderTwo.renderArr[2],
+    "Uno"
+  );
+
+  const playerOne = newPlayer(gameBoardTwo, 'p1');
+  const playerTwo = newPlayer(gameBoardOne, 'p2');
+
+  gameBoardAel(renderOne, playerTwo, truth);
+  gameBoardAel(renderTwo, playerOne, truth);
+};
+
+module.exports = gameLoop;
